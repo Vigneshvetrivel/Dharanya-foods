@@ -119,6 +119,14 @@
                         <div style="background: linear-gradient(to right, #fff8e1, #fceabb); padding: 30px 20px; border-radius: 20px; max-width: 1000px; margin: auto; font-family: sans-serif;">
 
     <!-- Flex container -->
+    <center>
+<div>
+  <img src="logo.png" alt="Dharanya foods"
+       style="width: 50%; max-width: 250px; ">
+</div>
+</center>
+
+
     <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px;">
 
       <!-- Left image -->
@@ -129,19 +137,25 @@
 
       <!-- Right text -->
       <div style="flex: 2; min-width: 300px; text-align: left;">
-        <p style="font-size: 2rem; font-weight: bold; color: #2c3e50; margin-bottom: 15px;">
-    Welcome to Dharanya Foods, where tradition meets nutrition.
-  </p>
+        <div style="text-align: center; margin-bottom: 20px;">
+      <p style="font-size: 2rem; font-weight: bold; color: #2c3e50; margin: 0;">
+        Nandhini.
+      </p>
+      <p style="font-size: 1rem; color: #4a4a4a; margin-top: 5px;">
+        Founder of Dharanya Foods – Bringing health to your home.
+      </p>
+    </div>
 
-        <p style="font-size: 1rem; color: #444; line-height: 1.6;">
-          Founded by Nandhini with a passion for healthy living and natural foods, we are dedicated to bringing you the finest quality millets, rice, flour, and health mix products.
-        </p>
-      </div>
+
+
 
     </div>
 
     <!-- Bottom full-width text -->
     <div style="margin-top: 30px; color: #444; font-size: 1rem; line-height: 1.6; text-align: justify;">
+      <p style="font-size: 1rem; color: #444; line-height: 1.6;">
+       Founded by Nandhini with a passion for healthy living and natural foods, we are dedicated to bringing you the finest quality millets, rice, flour, and health mix products.
+      </p>
       <p>
         Our journey began with a simple belief — that everyone deserves access to pure, nutritious, and naturally processed foods. We source our products directly from trusted farmers who share our commitment to quality and sustainability.
       </p>
@@ -251,10 +265,53 @@
         </div>
     </div>
 
+<!-- footer -->
     <footer class="bg-light py-3 mt-5">
-        <div class="container">
-            <p class="text-center mb-0">&copy; 2025 Dharanya Foods. All rights reserved. | Made with ❤️ by Nandhini</p>
+      <div style="background-color:#1e293b; font-family: Arial, sans-serif; padding: 30px 20px; color:white;">
+
+    <!-- Grid: Contact Info + Icons -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: flex-start;">
+
+      <!-- Contact -->
+      <div style="flex: 1; min-width: 220px;">
+        <h3 style="margin-bottom: 10px; color: #ffffff;">Contact</h3>
+        <p style="margin: 4px 0;"><strong>Address:</strong> 18, West Street, Koneripatti,<br>
+          Rasipuram – 637408,<br> Namakkal (Dt), Tamil Nadu</p>
+        <p style="margin: 4px 0;"><strong>Call:</strong> +91 7598660307</p>
+        <p style="margin: 4px 0;"><strong>Email:</strong> dharanyafoods@gmail.com</p>
+        <p style="margin: 12px 0 0; font-weight: bold; color: #00eaff;">FSSAI Lic.No: 22425444000050</p>
+      </div>
+
+      <!-- Social Icons -->
+      <div style="flex: 1; min-width: 220px;">
+        <h3 style="margin-bottom: 10px; color: #ffffff;">Connect With Us</h3>
+        <div style="margin-top: 10px; text-align: center;">
+          <a href="https://wa.me/917598660307" target="_blank" style="margin-right: 15px; display: inline-block; transition: transform 0.3s;">
+            <img src="https://img.icons8.com/color/96/whatsapp--v1.png" alt="WhatsApp" style="width: 48px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+          </a>
+          <a href="mailto:dharanyafoods@gmail.com" target="_blank" style="margin-right: 15px; display: inline-block; transition: transform 0.3s;">
+            <img src="https://img.icons8.com/fluency/96/new-post.png" alt="Email" style="width: 48px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+          </a>
+          <a href="https://www.instagram.com/dharanya_foods?igsh=MXVrNG16cXd3dm00ZQ==" target="_blank" style="display: inline-block; transition: transform 0.3s;">
+            <img src="https://img.icons8.com/color/96/instagram-new--v1.png" alt="Instagram" style="width: 48px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+          </a>
         </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <hr style="margin: 30px 0; border: none; border-top: 1px solid #ffffff44;">
+
+
+
+      <!-- Copyright -->
+      <div style="flex: 1; min-width: 220px; text-align: center; font-size: 14px;">
+        &copy; 2025 Dharanya Foods. All rights reserved.<br>Made with ❤️ by Nandhini
+      </div>
+
+  </div>
+
+
     </footer>
 
     <!-- Bootstrap JS -->
@@ -278,15 +335,15 @@
           { name: 'Poongar Rice', image: 'Poongar Rice.png', description: 'Long-grain aromatic rice with distinctive fragrance' }
       ],
       flour: [
-          { name: 'Wheat Flour', image: 'wheat-flour.png', description: 'Fresh ground wheat flour for daily cooking' },
-          { name: 'Multi-grain Flour', image: 'multigrain-flour.png', description: 'Blend of nutritious grains for healthy bread' },
-          { name: 'Ragi Flour', image: 'ragi-flour.png', description: 'Finger millet flour rich in calcium' }
+          // { name: 'Wheat Flour', image: 'wheat-flour.png', description: 'Fresh ground wheat flour for daily cooking' },
+          // { name: 'Multi-grain Flour', image: 'multigrain-flour.png', description: 'Blend of nutritious grains for healthy bread' },
+          { name: 'Ragi Flour', image: 'Ragi.png', description: 'Finger millet flour rich in calcium' }
       ],
-      healthMix: [
-          { name: 'Traditional Health Mix', image: 'traditional-health-mix.png', description: 'Blend of 10+ nutritious grains and lentils' },
-          { name: 'Kids Health Mix', image: 'kids-health-mix.png', description: 'Specially formulated for growing children' },
-          { name: 'Diabetic Health Mix', image: 'diabetic-health-mix.png', description: 'Low glycemic index mix for diabetics' }
-      ]
+      // healthMix: [
+      //     { name: 'Traditional Health Mix', image: 'traditional-health-mix.png', description: 'Blend of 10+ nutritious grains and lentils' },
+      //     { name: 'Kids Health Mix', image: 'kids-health-mix.png', description: 'Specially formulated for growing children' },
+      //     { name: 'Diabetic Health Mix', image: 'diabetic-health-mix.png', description: 'Low glycemic index mix for diabetics' }
+      // ]
     };
 
     const sizes = ['500g', '1kg', '2kg', '5kg', '10kg', '25kg'];

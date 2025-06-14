@@ -5,845 +5,229 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dharanya Foods - Premium Millets, Rice & Health Mix</title>
     <link rel="icon" type="image/x-icon" href="logo.png" id="favicon-link">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 8px 32px rgba(30, 41, 59, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            color: white;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-        }
-
-        .company-info h1 {
-            font-size: 2rem;
-            margin-bottom: 0.2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, #f59e0b, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .company-info p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            color: #cbd5e1;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        nav a:hover, nav a.active {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-        }
-
-        .cart-icon {
-            position: relative;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .cart-icon:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
-        }
-
-        main {
-            padding: 2rem 0;
-        }
-
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(51, 65, 85, 0.95)),
-                        radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-            margin-bottom: 3rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,106.7C960,117,1056,139,1152,138.7C1248,139,1344,117,1392,106.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"/></svg>') repeat-x;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-            padding: 18px 45px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(245, 158, 11, 0.6);
-        }
-
-        .product-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .category-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .category-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-        }
-
-        .category-card h3 {
-            color: #1e293b;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .category-card p {
-            color: #64748b;
-            line-height: 1.7;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: #6366f1;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .product-image:hover {
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        .product-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            color: #1e293b;
-            font-weight: 600;
-        }
-
-        .product-description {
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .size-selector {
-            margin-bottom: 1.5rem;
-        }
-
-        .size-selector label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .size-selector select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .size-selector select:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .price-display {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #f59e0b;
-            margin-bottom: 1.5rem;
-        }
-
-        .add-to-cart-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .add-to-cart-btn:hover {
-            background: linear-gradient(135deg, #5b21b6, #7c3aed);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-        }
-
-        .cart-sidebar {
-            position: fixed;
-            right: -400px;
-            top: 0;
-            width: 400px;
-            height: 100vh;
-            background: white;
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-            transition: right 0.3s ease;
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .cart-sidebar.open {
-            right: 0;
-        }
-
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1500;
-            display: none;
-            backdrop-filter: blur(5px);
-        }
-
-        .cart-overlay.show {
-            display: block;
-        }
-
-        .cart-header {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: white;
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-header h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 5px;
-            border-radius: 50%;
-        }
-
-        .close-cart:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .cart-items {
-            padding: 1.5rem;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .cart-item h4 {
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .cart-item p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .cart-total {
-            padding: 1.5rem;
-            border-top: 3px solid #f59e0b;
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-        }
-
-        .checkout-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .checkout-btn:hover {
-            background: linear-gradient(135deg, #d97706, #b45309);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-        }
-
-        .about-content {
-            background: white;
-            padding: 4rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-
-        .about-content h2 {
-            color: #1e293b;
-            margin-bottom: 2.5rem;
-            font-size: 2.8rem;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 2.5rem;
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            border-radius: 20px;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-        }
-
-        .feature-item h3 {
-            color: #1e293b;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .checkout-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            max-width: 700px;
-            margin: 0 auto;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-
-        .checkout-form h2 {
-            color: #1e293b;
-            margin-bottom: 2.5rem;
-            font-size: 2.2rem;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .order-summary {
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            padding: 2rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-
-        .submit-order-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-order-btn:hover {
-            background: linear-gradient(135deg, #5b21b6, #7c3aed);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-        }
-
-        footer {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            opacity: 0.9;
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
-            }
-
-            nav ul {
-                justify-content: center;
-            }
-
-            .company-info h1 {
-                font-size: 1.8rem;
-            }
-
-            .about-content {
-                padding: 2rem;
-            }
-
-            .checkout-form {
-                padding: 2rem;
-            }
-
-            .product-categories {
-                grid-template-columns: 1fr;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-
+        <nav class="navbar navbar-expand-lg ">
+            <div  class="container">
+                <div class="navbar-brand">
                     <div class="company-info">
-                        <img id="logo-img" src="logo.png" alt="Logo" style="width:300px">
-                        <center><p>Premium Quality • Natural • Healthy</p></center>
+                        <img id="logo-img" src="logo.png" alt="Logo" style="width:250px" class="img-fluid">
+                        <div class="text-center">
+                            <p class="mb-0">Premium Quality • Natural • Healthy</p>
+
+                        </div>
                     </div>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#" onclick="showPage('home')" class="nav-link active">Home</a></li>
-                        <li><a href="#" onclick="showPage('products')" class="nav-link">Products</a></li>
-                        <li><a href="#" onclick="showPage('about')" class="nav-link">About</a></li>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto me-3">
+                        <li class="nav-item">
+                            <a style="color:white;padding-left: 20px;padding-right:20px" class="nav-link active" href="#" onclick="showPage('home')">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="color:white;padding-left: 20px;padding-right:20px" class="nav-link" href="#" onclick="showPage('products')">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="color:white;padding-left: 20px;padding-right:20px" class="nav-link" href="#" onclick="showPage('about')">About</a>
+                        </li>
                     </ul>
-                </nav>
-                <div class="cart-icon" onclick="toggleCart()">
-                    🛒 Cart
-                    <span class="cart-count" id="cart-count">0</span>
+
                 </div>
+
+
             </div>
-        </div>
+
+            <div style="color:white" class="cart-icon btn btn-outline-success" onclick="toggleCart()">
+                🛒 Cart
+                <span class="badge bg-success" id="cart-count">0</span>
+            </div>
+        </nav>
     </header>
 
     <div class="container">
         <main>
             <!-- Home Page -->
             <div id="home" class="page active">
-                <div class="hero">
-                    <h2>Welcome to Dharanya Foods</h2>
-                    <p>Discover the finest quality millets, rice, flour, and health mix products. Naturally sourced, traditionally processed, and packed with nutrition for your healthy lifestyle.</p>
-                    <a href="#" onclick="showPage('products')" class="cta-button">Shop Now</a>
+                <div class="hero text-center py-5">
+                    <h2 class="display-4 mb-4">Welcome to Dharanya Foods</h2>
+                    <p class="lead mb-4">Discover the finest quality millets, rice, flour, and health mix products. Naturally sourced, traditionally processed, and packed with nutrition for your healthy lifestyle.</p>
+                    <a href="#" onclick="showPage('products')" class="btn btn-success btn-lg">Shop Now</a>
                 </div>
 
-                <div class="product-categories">
-                    <div class="category-card">
-                        <div class="category-icon">🌾</div>
-                        <h3>Premium Millets</h3>
-                        <p>Nutritious and organic millets including Pearl Millet, Finger Millet, Little Millet, Foxtail Millet, and Barnyard Millet</p>
+                <div class="row g-4 mt-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 text-center">
+                            <div class="card-body">
+                                <div class="category-icon fs-1">🌾</div>
+                                <h3 class="card-title">Premium Millets</h3>
+                                <p class="card-text">Nutritious and organic millets including Pearl Millet, Finger Millet, Little Millet, Foxtail Millet, and Barnyard Millet</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="category-card">
-                        <div class="category-icon">🍚</div>
-                        <h3>Quality Rice</h3>
-                        <p>Traditional and aromatic rice varieties sourced from the finest farms across India</p>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 text-center">
+                            <div class="card-body">
+                                <div class="category-icon fs-1">🍚</div>
+                                <h3 class="card-title">Quality Rice</h3>
+                                <p class="card-text">Traditional and aromatic rice varieties sourced from the finest farms across India</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="category-card">
-                        <div class="category-icon">🥛</div>
-                        <h3>Fresh Flour</h3>
-                        <p>Freshly ground flour made from premium grains, perfect for all your cooking needs</p>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 text-center">
+                            <div class="card-body">
+                                <div class="category-icon fs-1">🥛</div>
+                                <h3 class="card-title">Fresh Flour</h3>
+                                <p class="card-text">Freshly ground flour made from premium grains, perfect for all your cooking needs</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="category-card">
-                        <div class="category-icon">💪</div>
-                        <h3>Health Mix</h3>
-                        <p>Specially formulated health mixes packed with nutrients and natural goodness</p>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 text-center">
+                            <div class="card-body">
+                                <div class="category-icon fs-1">💪</div>
+                                <h3 class="card-title">Health Mix</h3>
+                                <p class="card-text">Specially formulated health mixes packed with nutrients and natural goodness</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <br><br><br>
             </div>
 
             <!-- Products Page -->
             <div id="products" class="page">
-                <h2 style="text-align: center; color: #1e293b; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 700;">Our Products</h2>
-                <div class="products-grid" id="products-grid">
+                <h2  class="text-center txt-primary mb-5 display-5 fw-bold">Our Products</h2>
+                <div class="row g-4" id="products-grid">
                     <!-- Products will be loaded here -->
                 </div>
             </div>
 
             <!-- About Page -->
             <div id="about" class="page">
-                <div class="about-content">
-                    <h2>About Dharanya Foods</h2>
-                    <div class="about-text">
-                        <p>Welcome to Dharanya Foods, where tradition meets nutrition. Founded by Nandhini with a passion for healthy living and natural foods, we are dedicated to bringing you the finest quality millets, rice, flour, and health mix products.</p>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 style="font-weight:700;font-size:45px" class="text-center mb-4 ">About Dharanya Foods</h2>
+                        <div style="background: linear-gradient(to right, #fff8e1, #fceabb); padding: 30px 20px; border-radius: 20px; max-width: 1000px; margin: auto; font-family: sans-serif;">
 
-                        <p>Our journey began with a simple belief - that everyone deserves access to pure, nutritious, and naturally processed foods. We source our products directly from trusted farmers who share our commitment to quality and sustainability.</p>
+    <!-- Flex container -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px;">
 
-                        <p>At Dharanya Foods, we understand that good health starts with good food. That's why every product in our collection is carefully selected, traditionally processed, and packed with the nutrients your body needs to thrive.</p>
+      <!-- Left image -->
+      <div style="flex: 1; min-width: 300px; text-align: center;">
+        <img src="Nandhini.png" alt="Founder Nandhini"
+             style="width: 100%; max-width: 350px; height: auto;">
+      </div>
 
-                        <p>From ancient grains like millets that have sustained civilizations for thousands of years, to aromatic rice varieties that bring families together around the dinner table, we celebrate the rich agricultural heritage of India while meeting the nutritional needs of modern families.</p>
-                    </div>
+      <!-- Right text -->
+      <div style="flex: 2; min-width: 300px; text-align: left;">
+        <p style="font-size: 2rem; font-weight: bold; color: #2c3e50; margin-bottom: 15px;">
+    Welcome to Dharanya Foods, where tradition meets nutrition.
+  </p>
 
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">🌱</div>
-                            <h3>100% Natural</h3>
-                            <p>No artificial additives or preservatives</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🏆</div>
-                            <h3>Premium Quality</h3>
-                            <p>Carefully selected and quality tested</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🚚</div>
-                            <h3>Fresh Delivery</h3>
-                            <p>Direct from source to your doorstep</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">💚</div>
-                            <h3>Health Focused</h3>
-                            <p>Packed with essential nutrients</p>
+        <p style="font-size: 1rem; color: #444; line-height: 1.6;">
+          Founded by Nandhini with a passion for healthy living and natural foods, we are dedicated to bringing you the finest quality millets, rice, flour, and health mix products.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Bottom full-width text -->
+    <div style="margin-top: 30px; color: #444; font-size: 1rem; line-height: 1.6; text-align: justify;">
+      <p>
+        Our journey began with a simple belief — that everyone deserves access to pure, nutritious, and naturally processed foods. We source our products directly from trusted farmers who share our commitment to quality and sustainability.
+      </p>
+      <p>
+        At Dharanya Foods, we understand that good health starts with good food. That's why every product in our collection is carefully selected, traditionally processed, and packed with the nutrients your body needs to thrive.
+      </p>
+      <p>
+        From ancient grains like millets that have sustained civilizations for thousands of years, to aromatic rice varieties that bring families together around the dinner table — we celebrate the rich agricultural heritage of India while meeting the nutritional needs of modern families.
+      </p>
+    </div>
+
+  </div>
+
+
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="text-center">
+                                    <div class="feature-icon fs-1">🌱</div>
+                                    <h3>100% Natural</h3>
+                                    <p>No artificial additives or preservatives</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="text-center">
+                                    <div class="feature-icon fs-1">🏆</div>
+                                    <h3>Premium Quality</h3>
+                                    <p>Carefully selected and quality tested</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="text-center">
+                                    <div class="feature-icon fs-1">🚚</div>
+                                    <h3>Fresh Delivery</h3>
+                                    <p>Direct from source to your doorstep</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="text-center">
+                                    <div class="feature-icon fs-1">💚</div>
+                                    <h3>Health Focused</h3>
+                                    <p>Packed with essential nutrients</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
             <!-- Checkout Page -->
             <div id="checkout" class="page">
-                <div class="checkout-form">
-                    <h2 style="text-align: center; color: #2c5530; margin-bottom: 2rem;">Complete Your Order</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-center text-success mb-4">Complete Your Order</h2>
 
-                    <div class="order-summary" id="order-summary">
-                        <!-- Order items will be displayed here -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h3>Order Summary</h3>
+                            </div>
+                            <div class="card-body" id="order-summary">
+                                <!-- Order items will be displayed here -->
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <form id="checkout-form" onsubmit="submitOrder(event)">
+                                    <div class="mb-3">
+                                        <label for="customer-name" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="customer-name" name="name" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="customer-phone" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="customer-phone" name="phone" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="customer-address" class="form-label">Delivery Address *</label>
+                                        <textarea class="form-control" id="customer-address" name="address" rows="3" required></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success btn-lg w-100">Place Order</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-
-                    <form id="checkout-form" onsubmit="submitOrder(event)">
-                        <div class="form-group">
-                            <label for="customer-name">Full Name *</label>
-                            <input type="text" id="customer-name" name="name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="customer-phone">Phone Number *</label>
-                            <input type="tel" id="customer-phone" name="phone" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="customer-address">Delivery Address *</label>
-                            <textarea id="customer-address" name="address" rows="3" required></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-order-btn">Place Order</button>
-                    </form>
                 </div>
             </div>
         </main>
@@ -852,513 +236,598 @@
     <!-- Cart Sidebar -->
     <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
     <div class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-header">
-            <h3>Your Cart</h3>
-            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        <div class="cart-header d-flex justify-content-between align-items-center p-3 border-bottom">
+            <h3 class="mb-0">Your Cart</h3>
+            <button class="btn btn-close" onclick="toggleCart()"></button>
         </div>
-        <div class="cart-items" id="cart-items">
-            <p style="text-align: center; color: #666; padding: 2rem;">Your cart is empty</p>
+        <div class="cart-items p-3" id="cart-items">
+            <p class="text-center text-muted p-4">Your cart is empty</p>
         </div>
-        <div class="cart-total" id="cart-total" style="display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div class="cart-total p-3 border-top" id="cart-total" style="display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
                 <strong>Total: ₹<span id="total-amount">0</span></strong>
             </div>
-            <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            <button class="btn btn-success w-100" onclick="toggleCart();proceedToCheckout();">Proceed to Checkout</button>
         </div>
     </div>
 
-    <footer>
+    <footer class="bg-light py-3 mt-5">
         <div class="container">
-            <p>&copy; 2024 Dharanya Foods. All rights reserved. | Made with ❤️ by Nandhini</p>
+            <p class="text-center mb-0">&copy; 2025 Dharanya Foods. All rights reserved. | Made with ❤️ by Nandhini</p>
         </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        // Product data
-        const products = {
-            millets: [
-                { name: 'Kodo Millet (Varagu)', icon: '🌾', description: 'Rich in protein and fiber, perfect for healthy meals' },
-                { name: 'Finger Millet (Ragi)', icon: '🌾', description: 'High in calcium and iron, excellent for bone health' },
-                { name: 'Little Millet(Samai)', icon: '🌾', description: 'Gluten-free grain packed with nutrients' },
-                { name: 'Foxtail Millet(Thinai)', icon: '🌾', description: 'Low glycemic index, ideal for diabetics' },
-                { name: 'Barnyard Millet(Kuthiraivali)', icon: '🌾', description: 'High in fiber and helps in weight management' }
-            ],
-            rice: [
-                { name: 'Poongar Rice', icon: '🍚', description: 'Long-grain aromatic rice with distinctive fragrance' },
-                { name: 'Black Rice', icon: '🍚', description: 'Whole grain rice rich in nutrients and fiber' },
-                { name: 'Red Rice', icon: '🍚', description: 'Antioxidant-rich rice with nutty flavor' },
-                { name: 'Kattuyanam Rice', icon: '🍚', description: 'Ancient grain loaded with anthocyanins' },
-                { name: 'Mappillai samba Rice', icon: '🍚', description: 'Premium quality medium-grain rice' }
-            ],
-            flour: [
-                { name: 'Wheat Flour', icon: '🥛', description: 'Fresh ground wheat flour for daily cooking' },
-                { name: 'Multi-grain Flour', icon: '🥛', description: 'Blend of nutritious grains for healthy bread' },
-                { name: 'Ragi Flour', icon: '🥛', description: 'Finger millet flour rich in calcium' }
+    // Product data with PNG image paths
+    const products = {
+      millets: [
+          { name: 'Finger Millet (Ragi)', image: 'Ragi.png', description: 'High in calcium and iron, excellent for bone health' },
+          { name: 'Foxtail Millet (Thinai)', image: 'Thinai.png', description: 'Low glycemic index, ideal for diabetics' },
+          { name: 'Kodo Millet (Varagu)', image: 'Varagu.png', description: 'Rich in protein and fiber, perfect for healthy meals' },
+          { name: 'Little Millet (Samai)', image: 'Samai.png', description: 'Gluten-free grain packed with nutrients' },
+          { name: 'Barnyard Millet (Kuthiraivali)', image: 'Kuthiraivali.png', description: 'High in fiber and helps in weight management' }
+      ],
+      rice: [
+          { name: 'Red Rice', image: 'Red rice.png', description: 'Antioxidant-rich rice with nutty flavor' },
+          { name: 'Black Rice', image: 'Black rice.png', description: 'Ancient grain loaded with anthocyanins' },
+          { name: 'Kattuyanam Rice', image: 'Kattuyanam.png', description: 'Whole grain rice rich in nutrients and fiber' },
+          { name: 'Mappillai Samba Rice', image: 'Mappillai Samba.png', description: 'Premium quality medium-grain rice' },
+          { name: 'Poongar Rice', image: 'Poongar Rice.png', description: 'Long-grain aromatic rice with distinctive fragrance' }
+      ],
+      flour: [
+          { name: 'Wheat Flour', image: 'wheat-flour.png', description: 'Fresh ground wheat flour for daily cooking' },
+          { name: 'Multi-grain Flour', image: 'multigrain-flour.png', description: 'Blend of nutritious grains for healthy bread' },
+          { name: 'Ragi Flour', image: 'ragi-flour.png', description: 'Finger millet flour rich in calcium' }
+      ],
+      healthMix: [
+          { name: 'Traditional Health Mix', image: 'traditional-health-mix.png', description: 'Blend of 10+ nutritious grains and lentils' },
+          { name: 'Kids Health Mix', image: 'kids-health-mix.png', description: 'Specially formulated for growing children' },
+          { name: 'Diabetic Health Mix', image: 'diabetic-health-mix.png', description: 'Low glycemic index mix for diabetics' }
+      ]
+    };
 
-            ],
-            healthMix: [
-                { name: 'Traditional Health Mix', icon: '💪', description: 'Blend of 10+ nutritious grains and lentils' },
-                { name: 'Kids Health Mix', icon: '💪', description: 'Specially formulated for growing children' },
-                { name: 'Diabetic Health Mix', icon: '💪', description: 'Low glycemic index mix for diabetics' }
-            ]
-        };
+    const sizes = ['500g', '1kg', '2kg', '5kg', '10kg', '25kg'];
 
-        const sizes = ['500g', '1kg', '2kg', '5kg', '10kg'];
+    // Updated prices based on Dharanya Foods price table
+    const basePrices = {
+      // All millets have the same pricing
+      'millets': {
+          '500g': 95,
+          '1kg': 175,
+          '2kg': 345,
+          '5kg': 850,
+          '10kg': 1600,
+          '25kg': 3000
+      }
+    };
 
-        // Placeholder prices (to be updated later)
-        const basePrices = {
-            '500g': 50,
-            '1kg': 90,
-            '2kg': 170,
-            '5kg': 400,
-            '10kg': 750
-        };
+    // Individual rice pricing - each rice variety has different prices
+    const ricePrices = {
+      'Red Rice': {
+          '500g': 70,
+          '1kg': 150,
+          '2kg': 295,
+          '5kg': 725,
+          '10kg': 1300,
+          '25kg': 2200
+      },
+      'Black Rice': {
+          '500g': 170,
+          '1kg': 300,
+          '2kg': 595,
+          '5kg': 1475,
+          '10kg': 2700,
+          '25kg': 5100
+      },
+      'Kattuyanam Rice': {
+          '500g': 88,
+          '1kg': 185,
+          '2kg': 365,
+          '5kg': 900,
+          '10kg': 1650,
+          '25kg': 3100
+      },
+      'Mappillai Samba Rice': {
+          '500g': 88,
+          '1kg': 185,
+          '2kg': 365,
+          '5kg': 900,
+          '10kg': 1650,
+          '25kg': 3100
+      },
+      'Poongar Rice': {
+          '500g': 88,
+          '1kg': 185,
+          '2kg': 365,
+          '5kg': 900,
+          '10kg': 1650,
+          '25kg': 3100
+      }
+    };
 
-        let cart = [];
-        let currentPage = 'home';
+    // Flour pricing (you can update these based on your actual flour prices)
+    const flourPrices = {
+      'Wheat Flour': {
+          '500g': 60,
+          '1kg': 110,
+          '2kg': 210,
+          '5kg': 500,
+          '10kg': 950,
+          '25kg': 1800
+      },
+      'Multi-grain Flour': {
+          '500g': 80,
+          '1kg': 150,
+          '2kg': 290,
+          '5kg': 700,
+          '10kg': 1300,
+          '25kg': 2500
+      },
+      'Ragi Flour': {
+          '500g': 95,
+          '1kg': 175,
+          '2kg': 345,
+          '5kg': 850,
+          '10kg': 1600,
+          '25kg': 3000
+      }
+    };
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProducts();
-            updateCartCount();
+    // Health mix pricing (you can update these based on your actual health mix prices)
+    const healthMixPrices = {
+      'Traditional Health Mix': {
+          '500g': 120,
+          '1kg': 220,
+          '2kg': 420,
+          '5kg': 1000,
+          '10kg': 1900,
+          '25kg': 3600
+      },
+      'Kids Health Mix': {
+          '500g': 130,
+          '1kg': 240,
+          '2kg': 460,
+          '5kg': 1100,
+          '10kg': 2100,
+          '25kg': 4000
+      },
+      'Diabetic Health Mix': {
+          '500g': 140,
+          '1kg': 260,
+          '2kg': 500,
+          '5kg': 1200,
+          '10kg': 2300,
+          '25kg': 4400
+      }
+    };
 
-            // Logo upload handler
-            const logoInput = document.createElement('input');
-            logoInput.type = 'file';
-            logoInput.accept = 'image/*';
-            logoInput.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('logo-img').src = e.target.result;
-                        document.getElementById('logo-img').style.display = 'block';
-                        document.getElementById('logo-text').style.display = 'none';
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
+    let cart = [];
+    let currentPage = 'home';
 
-            // Favicon handler
-            const faviconInput = document.createElement('input');
-            faviconInput.type = 'file';
-            faviconInput.accept = 'image/*';
-            faviconInput.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('logo.png').href = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-        });
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      loadProducts();
+      updateCartCount();
+    });
 
-        // Load products
-        function loadProducts() {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = '';
+    // Get price for specific product
+    function getProductPrice(productName, category, size) {
+      if (category === 'millets') {
+          return basePrices.millets[size];
+      } else if (category === 'rice') {
+          return ricePrices[productName][size];
+      } else if (category === 'flour') {
+          return flourPrices[productName][size];
+      } else if (category === 'healthMix') {
+          return healthMixPrices[productName][size];
+      }
+      return 0;
+    }
 
-            Object.keys(products).forEach(category => {
-                products[category].forEach((product, index) => {
-                    const productCard = createProductCard(product, category, index);
-                    grid.appendChild(productCard);
-                });
-            });
-        }
+    // Load products
+    function loadProducts() {
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = '';
 
-        // Create product card
-        function createProductCard(product, category, index) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
+      Object.keys(products).forEach(category => {
+          products[category].forEach((product, index) => {
+              const productCard = createProductCard(product, category, index);
+              grid.appendChild(productCard);
+          });
+      });
+    }
 
-            const productId = `${category}-${index}`;
+    // Create product card
+    function createProductCard(product, category, index) {
+      const card = document.createElement('div');
+      card.className = 'col-md-6 col-lg-4 col-xl-3';
 
-            card.innerHTML = `
-                <div class="product-image">
-                    <img id="product-img-${productId}" src="" alt="${product.name}" style="display: none;">
-                    <span id="product-icon-${productId}">${product.icon}</span>
-                </div>
-                <div class="product-info">
-                    <h3>${product.name}</h3>
-                    <p class="product-description">${product.description}</p>
-                    <div class="size-selector">
-                        <label for="size-${productId}">Select Size:</label>
-                        <select id="size-${productId}" onchange="updatePrice('${productId}')">
-                            ${sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
-                        </select>
-                    </div>
-                    <div class="price-display">
-                        ₹<span id="price-${productId}">${basePrices['500g']}</span>
-                    </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('${productId}', '${product.name}', '${category}')">
-                        Add to Cart
-                    </button>
-                </div>
-            `;
+      const productId = `${category}-${index}`;
+      const initialPrice = getProductPrice(product.name, category, '500g');
 
-            // Add image upload functionality
-            const productImage = card.querySelector('.product-image');
-            productImage.addEventListener('click', function() {
-                const input = document.createElement('input');
-                input.type = 'file';
-                input.accept = 'image/*';
-                input.onchange = function(e) {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            document.getElementById(`product-img-${productId}`).src = e.target.result;
-                            document.getElementById(`product-img-${productId}`).style.display = 'block';
-                            document.getElementById(`product-icon-${productId}`).style.display = 'none';
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                };
-                input.click();
-            });
+      card.innerHTML = `
+          <div class="card h-100">
+              <div class="card-img-top" style="height: 250px; overflow: hidden;">
+                  <img id="product-img-${productId}" src="${product.image}" alt="${product.name}" class="w-100 h-100" style="object-fit: contain; object-position: center; background: #f8f9fa; padding: 10px;">
+              </div>
+              <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">${product.name}</h5>
+                  <p class="card-text">${product.description}</p>
+                  <div class="mb-3">
+                      <label for="size-${productId}" class="form-label">Select Size:</label>
+                      <select class="form-select" id="size-${productId}" onchange="updatePrice('${productId}', '${category}', '${product.name}')">
+                          ${sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                      </select>
+                  </div>
+                  <div class="mb-3">
+                      <span class="h5 text-success">₹<span id="price-${productId}">${initialPrice}</span></span>
+                  </div>
+                  <button class="btn btn-success mt-auto" onclick="addToCart('${productId}', '${product.name}', '${category}')">
+                      Add to Cart
+                  </button>
+              </div>
+          </div>
+      `;
 
-            return card;
-        }
+      return card;
+    }
 
-        // Update price based on selected size
-        function updatePrice(productId) {
-            const sizeSelect = document.getElementById(`size-${productId}`);
-            const priceSpan = document.getElementById(`price-${productId}`);
-            const selectedSize = sizeSelect.value;
-            priceSpan.textContent = basePrices[selectedSize];
-        }
+    // Update price based on selected size, category, and specific product
+    function updatePrice(productId, category, productName) {
+      const sizeSelect = document.getElementById(`size-${productId}`);
+      const priceSpan = document.getElementById(`price-${productId}`);
+      const selectedSize = sizeSelect.value;
+      const price = getProductPrice(productName, category, selectedSize);
+      priceSpan.textContent = price;
+    }
 
-        // Add to cart
-        function addToCart(productId, productName, category) {
-            const sizeSelect = document.getElementById(`size-${productId}`);
-            const selectedSize = sizeSelect.value;
-            const price = basePrices[selectedSize];
+    // Add to cart
+    function addToCart(productId, productName, category) {
+      const sizeSelect = document.getElementById(`size-${productId}`);
+      const selectedSize = sizeSelect.value;
+      const price = getProductPrice(productName, category, selectedSize);
 
-            const existingItem = cart.find(item =>
-                item.productId === productId && item.size === selectedSize
-            );
+      const existingItem = cart.find(item =>
+          item.productId === productId && item.size === selectedSize
+      );
 
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    productId,
-                    name: productName,
-                    size: selectedSize,
-                    price: price,
-                    quantity: 1,
-                    category
-                });
-            }
+      if (existingItem) {
+          existingItem.quantity += 1;
+      } else {
+          cart.push({
+              productId,
+              name: productName,
+              size: selectedSize,
+              price: price,
+              quantity: 1,
+              category
+          });
+      }
 
-            updateCartDisplay();
-            updateCartCount();
+      updateCartDisplay();
+      updateCartCount();
 
-            // Show success message
-            showNotification(`${productName} (${selectedSize}) added to cart!`);
-        }
+      // Show success message
+      showNotification(`${productName} (${selectedSize}) added to cart!`);
+    }
 
-        // Update cart display
-        function updateCartDisplay() {
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
+    // Update cart display
+    function updateCartDisplay() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
 
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Your cart is empty</p>';
-                cartTotal.style.display = 'none';
-                return;
-            }
+      if (cart.length === 0) {
+          cartItems.innerHTML = '<p class="text-center text-muted p-4">Your cart is empty</p>';
+          cartTotal.style.display = 'none';
+          return;
+      }
 
-            cartItems.innerHTML = '';
-            let total = 0;
+      cartItems.innerHTML = '';
+      let total = 0;
 
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
+      cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
 
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <div>
-                        <h4>${item.name}</h4>
-                        <p>${item.size} - ₹${item.price}</p>
-                        <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px;">
-                            <button onclick="updateQuantity(${index}, -1)" style="background: #ff4757; color: white; border: none; border-radius: 5px; width: 25px; height: 25px; cursor: pointer;">-</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="updateQuantity(${index}, 1)" style="background: #4caf50; color: white; border: none; border-radius: 5px; width: 25px; height: 25px; cursor: pointer;">+</button>
-                        </div>
-                    </div>
-                    <div style="text-align: right;">
-                        <p><strong>₹${itemTotal}</strong></p>
-                        <button onclick="removeFromCart(${index})" style="background: #ff4757; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Remove</button>
-                    </div>
-                `;
-                cartItems.appendChild(cartItem);
-            });
+          const cartItem = document.createElement('div');
+          cartItem.className = 'card mb-2';
+          cartItem.innerHTML = `
+              <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                      <div>
+                          <h6 class="card-title">${item.name}</h6>
+                          <p class="card-text small">${item.size} - ₹${item.price}</p>
+                          <div class="d-flex align-items-center gap-2">
+                              <button class="btn btn-danger btn-sm" onclick="updateQuantity(${index}, -1)">-</button>
+                              <span class="mx-2">${item.quantity}</span>
+                              <button class="btn btn-success btn-sm" onclick="updateQuantity(${index}, 1)">+</button>
+                          </div>
+                      </div>
+                      <div class="text-end">
+                          <p class="fw-bold">₹${itemTotal}</p>
+                          <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Remove</button>
+                      </div>
+                  </div>
+              </div>
+          `;
+          cartItems.appendChild(cartItem);
+      });
 
-            document.getElementById('total-amount').textContent = total;
-            cartTotal.style.display = 'block';
-        }
+      document.getElementById('total-amount').textContent = total;
+      cartTotal.style.display = 'block';
+    }
 
-        // Update quantity
-        function updateQuantity(index, change) {
-            cart[index].quantity += change;
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            updateCartDisplay();
-            updateCartCount();
-        }
+    // Update quantity
+    function updateQuantity(index, change) {
+      cart[index].quantity += change;
+      if (cart[index].quantity <= 0) {
+          cart.splice(index, 1);
+      }
+      updateCartDisplay();
+      updateCartCount();
+    }
 
-        // Remove from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartDisplay();
-            updateCartCount();
-        }
+    // Remove from cart
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+      updateCartCount();
+    }
 
-        // Update cart count
-        function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count').textContent = count;
-        }
+    // Update cart count
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
 
-        // Toggle cart
-        function toggleCart() {
-            const cartSidebar = document.getElementById('cart-sidebar');
-            const cartOverlay = document.getElementById('cart-overlay');
+    // Toggle cart
+    function toggleCart() {
+      const cartSidebar = document.getElementById('cart-sidebar');
+      const cartOverlay = document.getElementById('cart-overlay');
 
-            cartSidebar.classList.toggle('open');
-            cartOverlay.classList.toggle('show');
-        }
+      cartSidebar.classList.toggle('open');
+      cartOverlay.classList.toggle('show');
+    }
 
-        // Show page
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+    // Show page
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+          page.classList.remove('active');
+      });
 
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
+      // Show selected page
+      document.getElementById(pageId).classList.add('active');
 
-            // Update navigation
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            document.querySelector(`[onclick="showPage('${pageId}')"]`).classList.add('active');
+      // Update navigation
+      document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('active');
+      });
+      document.querySelector(`[onclick="showPage('${pageId}')"]`).classList.add('active');
 
-            currentPage = pageId;
-        }
+      // Close mobile menu after clicking
+      const navbarCollapse = document.getElementById('navbarNav');
+      if (navbarCollapse.classList.contains('show')) {
+          navbarCollapse.classList.remove('show');
+      }
 
-        // Proceed to checkout
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                showNotification('Your cart is empty!');
-                return;
-            }
+      currentPage = pageId;
+    }
 
-            showPage('checkout');
-            toggleCart();
-            displayOrderSummary();
-        }
+    // Proceed to checkout
+    function proceedToCheckout() {
+      if (cart.length === 0) {
+          showNotification('Your cart is empty!');
+          return;
+      }
 
-        // Display order summary
-        function displayOrderSummary() {
-            const orderSummary = document.getElementById('order-summary');
-            let total = 0;
+      showPage('checkout');
+      displayOrderSummary();
+    }
 
-            let summaryHTML = '<h3>Order Summary</h3>';
+    // Display order summary - FIXED
+    function displayOrderSummary() {
+      const orderSummary = document.getElementById('order-summary');
 
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                summaryHTML += `
-                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
-                        <div>
-                            <strong>${item.name}</strong><br>
-                            <small>${item.size} × ${item.quantity}</small>
-                        </div>
-                        <div>₹${itemTotal}</div>
-                    </div>
-                `;
-            });
+      if (cart.length === 0) {
+          orderSummary.innerHTML = '<p class="text-center text-muted">No items in cart</p>';
+          return;
+      }
 
-            summaryHTML += `
-                <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.2rem; font-weight: bold; border-top: 2px solid #4caf50; margin-top: 10px;">
-                    <div>Total Amount:</div>
-                    <div>₹${total}</div>
-                </div>
-            `;
+      let total = 0;
+      let summaryHTML = '';
 
-            orderSummary.innerHTML = summaryHTML;
-        }
+      cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          summaryHTML += `
+              <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                  <div>
+                      <strong>${item.name}</strong><br>
+                      <small class="text-muted">${item.size} × ${item.quantity}</small>
+                  </div>
+                  <div class="text-end">
+                      <span class="fw-bold">₹${itemTotal}</span>
+                  </div>
+              </div>
+          `;
+      });
 
-        // Submit order
-        async function submitOrder(event) {
-            event.preventDefault();
+      summaryHTML += `
+          <div class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top">
+              <h4 class="mb-0">Total Amount:</h4>
+              <h4 class="mb-0 text-success">₹${total}</h4>
+          </div>
+      `;
 
-            const formData = new FormData(event.target);
-            const customerName = formData.get('name');
-            const customerPhone = formData.get('phone');
-            const customerAddress = formData.get('address');
+      orderSummary.innerHTML = summaryHTML;
+    }
 
-            // Prepare order data
-            const orderData = {
-                customerName,
-                customerPhone,
-                customerAddress,
-                orderDate: new Date().toISOString(),
-                items: cart.map(item => ({
-                    productName: item.name,
-                    size: item.size,
-                    quantity: item.quantity,
-                    price: item.price,
-                    total: item.price * item.quantity
-                })),
-                totalAmount: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
-            };
+    // Submit order
+    async function submitOrder(event) {
+      event.preventDefault();
 
-            try {
-                // Send to Google Sheets
-                await sendToGoogleSheets(orderData);
+      const formData = new FormData(event.target);
+      const customerName = formData.get('name');
+      const customerPhone = formData.get('phone');
+      const customerAddress = formData.get('address');
 
-                // Clear cart
-                cart = [];
-                updateCartDisplay();
-                updateCartCount();
+      // Prepare order data
+      const orderData = {
+          customerName,
+          customerPhone,
+          customerAddress,
+          orderDate: new Date().toISOString(),
+          items: cart.map(item => ({
+              productName: item.name,
+              size: item.size,
+              quantity: item.quantity,
+              price: item.price,
+              total: item.price * item.quantity
+          })),
+          totalAmount: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+      };
 
-                // Show success message
-                showNotification('Order placed successfully! We will contact you soon.');
+      try {
+          // Send to Google Sheets
+          await sendToGoogleSheets(orderData);
 
-                // Reset form
-                event.target.reset();
+          // Clear cart
+          cart = [];
+          updateCartDisplay();
+          updateCartCount();
 
-                // Redirect to home
-                showPage('home');
+          // Show success message
+          showNotification('Order placed successfully! We will contact you soon.');
 
-            } catch (error) {
-                console.error('Error submitting order:', error);
-                showNotification('Error placing order. Please try again.');
-            }
-        }
+          // Reset form
+          event.target.reset();
 
-        // Send to Google Sheets
-        async function sendToGoogleSheets(orderData) {
-            // Google Apps Script Web App URL (to be replaced with actual URL)
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzhm9OOPUo5jyD_-9MwJqgN2DjhuKu6ulu-w6khxhq2a7tFl4U04KaLJbg056coayrmmg/exec';
+          // Redirect to home
+          showPage('home');
 
-            // Prepare data for Google Sheets
-            const sheetData = {
-                timestamp: new Date().toLocaleString('en-IN'),
-                customerName: orderData.customerName,
-                customerPhone: orderData.customerPhone,
-                customerAddress: orderData.customerAddress,
-                items: orderData.items.map(item =>
-                    `${item.productName} (${item.size}) x${item.quantity} - ₹${item.total}`
-                ).join('; '),
-                totalAmount: orderData.totalAmount
-            };
+      } catch (error) {
+          console.error('Error submitting order:', error);
+          showNotification('Error placing order. Please try again.');
+      }
+    }
 
-            // Note: Replace this with actual Google Apps Script URL
-            // For now, we'll log the data that would be sent
-            console.log('Order data to be sent to Google Sheets:', sheetData);
+    // Send to Google Sheets
+    async function sendToGoogleSheets(orderData) {
+      // Google Apps Script Web App URL (to be replaced with actual URL)
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzhm9OOPUo5jyD_-9MwJqgN2DjhuKu6ulu-w6khxhq2a7tFl4U04KaLJbg056coayrmmg/exec';
 
-            // Uncomment and use this when you have the Google Apps Script URL:
-            /*
-            const response = await fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(sheetData)
-            });
-            */
+      // Prepare data for Google Sheets
+      const sheetData = {
+          timestamp: new Date().toLocaleString('en-IN'),
+          customerName: orderData.customerName,
+          customerPhone: orderData.customerPhone,
+          customerAddress: orderData.customerAddress,
+          items: orderData.items.map(item =>
+              `${item.productName} (${item.size}) x${item.quantity} - ₹${item.total}`
+          ).join('; '),
+          totalAmount: orderData.totalAmount
+      };
 
-            // Simulate success for now
-            return Promise.resolve();
-        }
+      // Note: Replace this with actual Google Apps Script URL
+      // For now, we'll log the data that would be sent
+      console.log('Order data to be sent to Google Sheets:', sheetData);
 
-        // Show notification
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #4caf50;
-                color: white;
-                padding: 15px 20px;
-                border-radius: 10px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                z-index: 3000;
-                animation: slideIn 0.3s ease;
-            `;
-            notification.textContent = message;
+      // Uncomment and use this when you have the Google Apps Script URL:
+      /*
+      const response = await fetch(scriptURL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sheetData)
+      });
+      */
 
-            document.body.appendChild(notification);
+      // Simulate success for now
+      return Promise.resolve();
+    }
 
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
+    // Show notification
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #4caf50;
+          color: white;
+          padding: 15px 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          z-index: 3000;
+          animation: slideIn 0.3s ease;
+      `;
+      notification.textContent = message;
 
-        // Add CSS animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
+      document.body.appendChild(notification);
 
-        // Logo and favicon upload functions (for easy access)
-        function uploadLogo() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('logo.png').src = e.target.result;
-                        document.getElementById('logo.png').style.display = 'block';
-                        document.getElementById('logo.png').style.display = 'none';
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-        }
+      setTimeout(() => {
+          notification.style.animation = 'slideOut 0.3s ease';
+          setTimeout(() => {
+              document.body.removeChild(notification);
+          }, 300);
+      }, 3000);
+    }
 
-        function uploadFavicon() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('logo.png').href = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-        }
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+          from { transform: translateX(100%); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes slideOut {
+          from { transform: translateX(0); opacity: 1; }
+          to { transform: translateX(100%); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Logo and favicon upload functions (for easy access)
+    function uploadLogo() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = function(e) {
+          const file = e.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  document.getElementById('logo-img').src = e.target.result;
+                  document.getElementById('logo-img').style.display = 'block';
+              };
+              reader.readAsDataURL(file);
+          }
+      };
+      input.click();
+    }
+
+    function uploadFavicon() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = function(e) {
+          const file = e.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  document.getElementById('favicon-link').href = e.target.result;
+              };
+              reader.readAsDataURL(file);
+          }
+      };
+      input.click();
+    }
     </script>
 </body>
 </html>
